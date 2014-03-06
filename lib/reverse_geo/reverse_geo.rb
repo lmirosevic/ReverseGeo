@@ -11,7 +11,7 @@ class ReverseGeo
   end
 
   def country(opts = {})
-    raise ArgumentError, 'Did not supply a valid lat ([0,90]) and lng ([-180,180])' unless opts[:lat] && opts[:lat].between?(0, 90) && opts[:lng] && opts[:lng].between?(-180, 180)
+    raise ArgumentError, "Did not supply a valid lat ([-90,90]) and lng ([-180,180]). You supplied lat: #{opts[:lat]}, lng: #{opts[:lng]}" unless opts[:lat] && opts[:lat].between?(-90, 90) && opts[:lng] && opts[:lng].between?(-180, 180)
 
     poi = @factory.point(opts[:lng], opts[:lat])
     @countries.each do |country|
