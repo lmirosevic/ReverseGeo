@@ -2,7 +2,8 @@ require 'rgeo'
 require 'rgeo/geo_json'
 
 class ReverseGeo
-  def initialize(file = 'lib/reverse_geo/countries.geojson')
+  def initialize(file = nil)
+    file ||= File.join(File.dirname(__FILE__), 'countries.geojson')
     raise ArgumentError, 'Did not supply a valid geojson file.' unless File.exist?(file)
 
     @factory = RGeo::Geos.factory(srid: 4326)
