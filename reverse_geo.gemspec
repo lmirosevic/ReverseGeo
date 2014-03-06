@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'ReverseGeo'
-  s.version = '0.1.6'
+  s.version = '0.1.9'
   s.date = '2014-03-06'
   s.summary = 'A gem for reverse geocoding lat/lng pairs into a 3 letter ISO country code'
   s.files = [
