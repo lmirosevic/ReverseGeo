@@ -2,8 +2,10 @@ require 'rgeo'
 require 'rgeo/geo_json'
 
 class ReverseGeo
+  DEFAULT_SHAPEFILE = 'World-EEZ.geojson'
+
   def initialize(file = nil)
-    file ||= File.join(File.dirname(__FILE__), 'countries.geojson')
+    file ||= File.join(File.dirname(__FILE__), DEFAULT_SHAPEFILE)
     raise ArgumentError, 'Did not supply a valid geojson file.' unless File.exist?(file)
 
     @factory = RGeo::Geos.factory(srid: 4326)
@@ -15,7 +17,7 @@ class ReverseGeo
 
     poi = @factory.point(opts[:lng], opts[:lat])
     @countries.each do |country|
-      return country.properties['iso_a3'] if poi.within?(country.geometry)
+      return country.properties['ISO_A3'] if poi.within?(country.geometry)
     end
 
     return nil#fallback if we didn't find anything
