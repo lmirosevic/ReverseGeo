@@ -2,10 +2,10 @@ require 'rgeo'
 require 'rgeo/geo_json'
 
 class ReverseGeo
-  DEFAULT_SHAPEFILE = 'World-EEZ.geojson'
+  @@default_shapefile = 'World-EEZ.geojson'
 
   def initialize(file = nil)
-    file ||= File.join(File.dirname(__FILE__), DEFAULT_SHAPEFILE)
+    file ||= File.join(File.dirname(__FILE__), @@default_shapefile)
     raise ArgumentError, 'Did not supply a valid geojson file.' unless File.exist?(file)
 
     @factory = RGeo::Geos.factory(srid: 4326)
