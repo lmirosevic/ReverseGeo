@@ -1,7 +1,17 @@
-# ReverseGeo ![License](https://img.shields.io/badge/license-Apache_2-green.svg?style=flat)
+# ReverseGeo ![Version](https://img.shields.io/gem/v/ReverseGeo.svg?style=flat)&nbsp;![License](https://img.shields.io/badge/license-Apache_2-green.svg?style=flat)
 
 A gem for reverse geocoding lat/lng pairs into a 3 letter ISO country code, fully in-memory with no external service access.
 
+Usage
+------------
+
+```ruby
+require 'reverse_geo'
+
+geo = ReverseGeo.new # Creates a ReverseGeo object which can be used for reverse geocoding (this loads map data into memory)
+
+geo.country(lat: 48.2206849, lng: 16.3800599) # => 'AUT'
+```
 
 Copyright & License
 ------------
